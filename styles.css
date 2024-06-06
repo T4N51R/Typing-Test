@@ -1,0 +1,67 @@
+#colorChanging {
+    background-color: burlywood;
+    font-family: cursive;
+}
+
+.introDesign {
+    font-size: 52px;
+    text-align: center;
+}
+
+.designTheme {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnDesign {
+    width: 200px;
+    padding: 10px 40px;
+    border: 1px solid rgb(0, 255, 72);
+    background-color: teal;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: white;
+}
+
+.typingSection {
+    width: 500px;
+    height: 500px;
+    background-color: teal;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-right: 20px;
+    margin: auto;
+    color: white;
+}
+
+.typingQuote {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#typingInpute {
+    width: 400px;
+    height: 200px;
+    font-size: 18px;
+    font-weight: 500;
+    resize: none;
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+    text-decoration: underline;
+}
