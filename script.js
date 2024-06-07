@@ -6,21 +6,15 @@ const theme = document.getElementById('colorChanging');
 // Typing Test
 const showQuote = document.getElementById('typingQuot');
 const typedText = document.getElementById('typingInpute');
-const timer = document.getElementById('timer');
-const res = document.getElementById('totalTyped')
-const timerr = 10;
-let totalChar = 0;
-let totalTyped = 0;
-let totalError = 0;
-let accurecy = 0;
-let stopType = false;
-
+const startType = document.getElementById('startButton');
+const timer = document.getElementById('timer')
+startType.addEventListener('click', startEvent);
 // Checking the input
 typedText.addEventListener('input', () => {
     const showText = showQuote.querySelectorAll('span');
     const textValue = typedText.value.split('');
     let correct = true;
-    totalTyped++;
+
     showText.forEach((charSpan, index) => {
         const char = textValue[index];
         if (char == null) {
@@ -36,7 +30,6 @@ typedText.addEventListener('input', () => {
             charSpan.classList.remove('correct');
             charSpan.classList.add('incorrect');
             correct = false;
-            totalError++;
         }
     })
     if (correct) {
@@ -44,38 +37,27 @@ typedText.addEventListener('input', () => {
     }
 })
 
-// Timer 
-
-const startTimer = () => {
-    start = new Date();
-    setInterval(updateTimer, 1000);
+function startEvent() {
+    document.getElementById('starttt').style.display = 'block';
+    document.getElementById('startType').style.display = 'none';
+    startTimer(10);
 }
 
-function updateTimer() {
-    end = new Date();
-    const elaspedTime = Math.floor((end - start) / 1000)
-    timer.textContent = formatTime(elaspedTime)
-    if (elaspedTime >= timerr) {
-        endType();
-    }
-}
-function formatTime(sec) {
-    const min = Math.floor(sec / 60);
-    const remSec = sec % 60;
-    return `${min}:${remSec < 10 ? '0' : ''}${remSec}`;
-}
-// Timer end  
 
+function startTimer(sec) {
+    let remainingTIme = sec;
+    timer.textContent = `${remainingTIme}`;
+    typedText.disabled = false;
+    intervelId = setInterval(() => {
+        remainingTIme--;
+        timer.textContent = `${remainingTIme}`;
 
-const result = () => {
+        if (remainingTIme <= 0) {
+            clearInterval(intervelId);
+            typedText.disabled = true;
+        }
+    }, 1000);
 }
-
-function endType() {
-    clearInterval(updateTimer);
-    typedText.disabled = true;
-    res.innerText = ((totalCha * 100) / totalChar).toFixed(2);
-}
-
 
 // get a random quote
 const getRandomQuote = () => {
@@ -93,13 +75,12 @@ async function getNextQuote() {
         const charSpan = document.createElement('span');
         charSpan.innerText = charecter;
         showQuote.appendChild(charSpan);
-        totalChar++;
     });
 
     typedText.value = null;
 }
 
-
+getNextQuote();
 // change theme start 
 const blackColor = () => {
     console.log('clicking')

@@ -27,6 +27,10 @@
     color: white;
 }
 
+.start {
+    display: none;
+}
+
 .typingSection {
     width: 500px;
     height: 500px;
@@ -64,4 +68,25 @@
 .incorrect {
     color: red;
     text-decoration: underline;
+}
+
+.startType {
+    width: 400px;
+    height: 200px;
+    background-color: brown;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.startbtn {
+    padding: 10px 40px;
+    color: black;
+    font-size: 20px;
+    font-weight: bolder;
+    border: none;
 }
